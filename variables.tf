@@ -7,21 +7,21 @@ variable "vpc_cidr_block" {
     description = "The VPC Cidr block"
 }
 
-variable "public_subnet_cidr" {
-    description = "Public subnet cidr"
-}
+# variable "public_subnet_cidr" {
+#     description = "Public subnet cidr"
+# }
 
-variable "public_subnet_az" {
-    description = "Public subnet Availability Zone"
-}
+# variable "public_subnet_az" {
+#     description = "Public subnet Availability Zone"
+# }
 
-variable "private_subnet_cidr" {
-    description = "Private subnet cidr"
-}
+# variable "private_subnet_cidr" {
+#     description = "Private subnet cidr"
+# }
 
-variable "private_subnet_az" {
-    description = "Private subnet Availability Zone"
-}
+# variable "private_subnet_az" {
+#     description = "Private subnet Availability Zone"
+# }
 
 variable "internet_gateway_name" {
     description = "Internet gateway name"
