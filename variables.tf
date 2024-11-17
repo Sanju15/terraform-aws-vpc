@@ -7,20 +7,12 @@ variable "vpc_cidr_block" {
     description = "The VPC Cidr block"
 }
 
-variable "public_subnet_name" {
-    description = "Name of the Public Subnet"
-}
-
 variable "public_subnet_cidr" {
     description = "Public subnet cidr"
 }
 
 variable "public_subnet_az" {
     description = "Public subnet Availability Zone"
-}
-
-variable "private_subnet_name" {
-    description = "Name of the Private Subnet"
 }
 
 variable "private_subnet_cidr" {
@@ -41,4 +33,27 @@ variable "route_table_publlc_cidr" {
 
 variable "route_table_name" {
   description = "Route table name"
+}
+
+variable "subnet_count" {
+  description = "Subnet count"
+}
+
+variable "subnet_azs" {
+    description = "Public/Private subnet Availability Zone"
+    type        = list(string)
+}
+
+variable "private_subnet_cidrs" {
+    description = "Private subnet cidr"
+    type        = list(string)
+}
+
+variable "public_subnet_cidrs" {
+    description = "Public subnet cidr"
+    type        = list(string)
+}
+
+variable "eks_cluster_name" {
+  description = "EKS Cluster name"
 }

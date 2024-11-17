@@ -7,26 +7,21 @@ variable "vpc_cidr_block" {
     description = "The VPC Cidr block"
 }
 
-variable "public_subnet_name" {
-    description = "Name of the Public Subnet"
+variable "subnet_count" {
+  description = "Subnet count"
 }
 
-variable "public_subnet_cidr" {
+variable "public_subnet_cidrs" {
     description = "Public subnet cidr"
+    type        = list(string)
 }
 
-variable "public_subnet_az" {
-    description = "Public subnet Availability Zone"
+variable "subnet_azs" {
+    description = "Public/Private subnet Availability Zone"
+    type        = list(string)
 }
 
-variable "private_subnet_name" {
-    description = "Name of the Private Subnet"
-}
-
-variable "private_subnet_cidr" {
+variable "private_subnet_cidrs" {
     description = "Private subnet cidr"
-}
-
-variable "private_subnet_az" {
-    description = "Private subnet Availability Zone"
+    type        = list(string)
 }

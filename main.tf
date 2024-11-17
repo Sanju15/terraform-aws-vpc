@@ -1,14 +1,12 @@
 # Create VPC
 module "vpc" {
     source = "./modules/vpc"
+    subnet_count = var.subnet_count
     vpc_name = var.vpc_name
     vpc_cidr_block = var.vpc_cidr_block
-    public_subnet_name = var.public_subnet_name
-    public_subnet_az = var.public_subnet_az
-    public_subnet_cidr = var.public_subnet_cidr
-    private_subnet_name = var.private_subnet_name
-    private_subnet_az = var.private_subnet_az
-    private_subnet_cidr = var.private_subnet_cidr
+    subnet_azs = var.subnet_azs
+    public_subnet_cidrs = var.public_subnet_cidrs
+    private_subnet_cidrs = var.private_subnet_cidrs
 }
 
 
@@ -21,4 +19,11 @@ module "network" {
   public_subnet_id = module.vpc.public_subnet_id
   private_subnet_id = module.vpc.private_subnet_id
   route_table_name = var.route_table_name
+}
+
+module "eks" {
+  source = "./modules/eks"
+  eks_cluster_name = var.eks_cluster_name
+  vpc_id = module.vpc.vpc_id
+  subnet_ids = module.vpc.public_subnet_id
 }

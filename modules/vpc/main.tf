@@ -9,21 +9,23 @@ resource "aws_vpc" "vpc" {
 
 # public Subnet
 resource "aws_subnet" "public_subnet"{
+    count = var.subnet_count
     vpc_id = aws_vpc.vpc.id
-    cidr_block = var.public_subnet_cidr
-    availability_zone = var.public_subnet_az
+    cidr_block = element(var.public_subnet_cidrs, count.index)
+    availability_zone = element(var.subnet_azs, count.index)
     map_public_ip_on_launch = true
     tags = {
-      Name = var.public_subnet_name
+      Name = "public-subnet-${element(var.subnet_azs, count.index)}"
     }
 }
 
 # private Subnet
 resource "aws_subnet" "private_subnet"{
+    count = var.subnet_count
     vpc_id = aws_vpc.vpc.id
-    cidr_block = var.private_subnet_cidr
-    availability_zone = var.private_subnet_az
+    cidr_block = element(var.private_subnet_cidrs, count.index)
+    availability_zone = element(var.subnet_azs, count.index)
     tags = {
-      Name = var.private_subnet_name
-    }
+      Name = "private-subnet-${element(var.subnet_azs, count.index)}"
+  }
 }
