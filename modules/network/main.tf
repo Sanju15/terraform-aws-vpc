@@ -14,7 +14,7 @@ resource "aws_route_table" "public-route" {
         gateway_id = aws_internet_gateway.igw.id
     }
     tags = {
-      Name = var.route_table_name
+      Name = "${var.route_table_name}-public"
     }
 }
 
